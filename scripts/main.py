@@ -1,6 +1,8 @@
 
 import re
 import sqlite3
+import settings as st
+
 
 file_path = 'D:\\home\\Project\\Python\\1c_change\\fileconf\\ПоступлениеТоваров\\Forms\\ФормаДокумента\\Ext\\Form\\'
 
@@ -42,5 +44,5 @@ def add_db(result):
     conn.commit()
 
 if __name__ == "__main__":
-    open_file()
-
+   # open_file()
+    print(st.path_for_sphinx_dir)
