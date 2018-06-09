@@ -1,28 +1,27 @@
-"""Тестовый модуль для отладки"""
+"""Test module for debugging"""
 
-import os
-import sys
-import fnmatch
-#root = 'D:\\home\\Project\\1c_change\\fileconf\\'
-root = 'D:\\home\\Project\\1c\\'
-pattern = '*.bsl'
+import re
+ 
 
 
+def custom_replace(source, substr, repl, num):
+    """
+    """
+    tmp = source.split(substr)
+    if (len(tmp)-1) < num:
+        return source
+    return substr.join(tmp[:num])+repl+substr.join(tmp[num:])
 
-def print_file():
+#+КХ)((.|\n)*?)(@) 
+st_text = '+КХ Пашков_Д +  Крюгер 13.03.2018   @'
+st_text1 = '+КХ Пашков_Д +  Крюгер 13.03.2018   @'
+res = custom_replace(st_text1, '+', '-', 1)
+text = r'(\\'+ st_text + ')((.|\n)*?)(' + res + ')'
 
-    for folder, subdirs, files in os.walk(root):
-        #print (folder)
-        for filename in fnmatch.filter(files, pattern):
-            fullname = os.path.join(folder, filename)
-            print (fullname)
+print(text)
+ 
+# print(st_text1[:5])
+# print(st_text1[5:])
+# print(st_text1[5:].replace('+','-',0))
 
-
-
-
-
-
-
-if __name__ == "__main__":
-    print_file()
-    
+# print(st_text1[:5].replace('+','-',1)+st_text1[5:])
