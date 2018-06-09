@@ -36,62 +36,33 @@ def open_file(fullname):
 
 def find_change(my_string):
    # print(my_string)
-    mstr = '//+КХ_Пашков_Д_# aaaaaa //-КХ_Пашков_Д_# sdsdsd '
-    # pattern = re.compile(r'(\+КХ)((.|\n)*?)(-КХ)')
-    # result = pattern.findall(my_string)
-    # #print (result[1])
-    # if  result:
-    #     add_db(result)
-    #(\+КХ)((.|\n)*?)(\-КХ Пашков_ГТД \+  Крюгер 13\.03\.2018  @)
-    # #№print(result.index)
-
+    mstr = '//+КХ_1_# aaaaaa //+КХ_24_# xx //-КХ_1_# sdsdsd //-КХ_24_#'
     res = ''
 
-    #print(re.escape(r'(\+КХ)((.|\n)*?)(#)')  )
-    #pattern = re.compile(r'((\+КХ)((.|\n)*?)(#))')    
-    #pattern = re.compile(r'\+КХ((.|\n)*?)#')    
     pattern = re.compile(r'(\+КХ)(.+?)(#)')    
-    
-
-    
-
     result = pattern.findall(my_string)
-    
     
     res = ''
     if  result:
         for x in result:
-           # print(result)
-            #print(x)
             begin_pattern = ''.join(x)
-            
-            #print(begin_pattern)
             end_pattern = custom_replace(begin_pattern, '+', '-', 1)
-            
-            
-            #print(end_pattern)
-            #(//\+КХПашков_TEST\+ Крюгер02\.063\.20188@)((.|\n)*?)(//-КХПашков_TEST\+ Крюгер02\.063\.20188@)
-            #text = r'(//'+ begin_pattern + ')((.|\\n)*?)(' + '//' + end_pattern + ')'
-            #text = r'((//'+ begin_pattern + ')((.|\\n)*?)(' + '//' +  end_pattern + '))'
+
             text = r'('+"\\"+ begin_pattern + ')(.+?)(' + '//' +  end_pattern + ')'
-            # text1 = custom_replace(text, r'\\', '', 1)
-            #print(text)
-            #print(my_string)
-            # print(text1)
             match = re.findall(text, my_string, flags=re.S)
-            #print(match)
             
             if match:
                 for y in match:
-                    print('Found ')
+#                    print('Found ')
                     result = y[1]
-                    print(y[1])
-                    print('**********************************************************************')
+#                    print(y[1])
+                    res = res + result
+#                    print('**********************************************************************')
             else:
                 print('Did not find ')
-        res = res + result
+        
             
-    #print (res)        
+    print (res)        
     return res        
 #            
             #add_db(result)
@@ -166,3 +137,13 @@ if __name__ == "__main__":
 # #            patternN = re.compile(x)    
 #             #add_db(result)
 #     #№print(result.index)
+    # pattern = re.compile(r'(\+КХ)((.|\n)*?)(-КХ)')
+    # result = pattern.findall(my_string)
+    # #print (result[1])
+    # if  result:
+    #     add_db(result)
+    #(\+КХ)((.|\n)*?)(\-КХ Пашков_ГТД \+  Крюгер 13\.03\.2018  @)
+    # #№print(result.index)
+    #print(re.escape(r'(\+КХ)((.|\n)*?)(#)')  )
+    #pattern = re.compile(r'((\+КХ)((.|\n)*?)(#))')    
+    #pattern = re.compile(r'\+КХ((.|\n)*?)#')    
