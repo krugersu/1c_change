@@ -22,5 +22,13 @@ class MainTest(unittest.TestCase):
         self.assertEqual (main.find_change('//+КХ_1_# aaaaaa //+КХ_24_#  sdsdsd //-КХ_24_#  xx //-КХ_1_# '),' aaaaaa //+КХ_24_#  sdsdsd //-КХ_24_#  xx   sdsdsd ')
     
         
+    def test_custom_replace(self):    
+        """ varian 1 """
+        self.assertEqual (main.custom_replace('//+КХ_Пашков_Д_# aaaaaa','+','-',1),'//-КХ_Пашков_Д_# aaaaaa')
+        self.assertEqual (main.custom_replace('//+КХ_Пашков_Д_+# aaaaaa','+','-',2),'//+КХ_Пашков_Д_-# aaaaaa')
+        self.assertEqual (main.custom_replace('//+КХ_Пашков_Д_+# aaaaaa','+','-',3),'//+КХ_Пашков_Д_+# aaaaaa')
+        
+
+
 if __name__ == '__main__':
     unittest.main()

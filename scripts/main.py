@@ -35,10 +35,7 @@ def open_file(fullname):
     my_file.close()
 
 def find_change(my_string):
-   # print(my_string)
-    mstr = '//+КХ_1_# aaaaaa //+КХ_24_# xx //-КХ_1_# sdsdsd //-КХ_24_#'
-    res = ''
-
+   
     pattern = re.compile(r'(\+КХ)(.+?)(#)')    
     result = pattern.findall(my_string)
     
@@ -60,13 +57,9 @@ def find_change(my_string):
 #                    print('**********************************************************************')
             else:
                 print('Did not find ')
-        
-            
-    print (res)        
+        print (res)        
     return res        
-#            
-            #add_db(result)
-    #№print(result.index)
+
 
 def custom_replace(source, substr, repl, num):
     """
